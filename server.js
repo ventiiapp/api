@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
   }));
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`server running on port ${PORT}`);
+    console.log(`server running on port #${PORT}`);
 });
 
 app.get('/', (req, res) => {
