@@ -19,8 +19,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/send-email', (req, res) => {
-    console.log(req.body);
-    
     mailer.sendEmail(req.body.to, info => {
         res.send(info);
     });

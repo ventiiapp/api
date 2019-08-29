@@ -1,7 +1,7 @@
 const mailer = require('nodemailer');
 require('dotenv').config();
 
-module.exports.sendEmail = async (to, callback) => {
+module.exports.sendEmail = (to, callback) => {
     let transporter = mailer.createTransport({
         service: 'gmail',
         auth: {
@@ -13,18 +13,17 @@ module.exports.sendEmail = async (to, callback) => {
     let mailOptions = {
         from: 'ventiiapp@gmail.com',
         to,
-        cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
+        // cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
         subject: 'Formulario de Orden Ventii - TEST',
         html: '<h1>correo enviado desde la plataforma de Ventii</h1>'
     };
 
-    let info = await transporter.sendMail(mailOptions, (err, data) => {
+    transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
             console.log('err: ', err);
         } else {
             console.log('email sent: ', data);
+            callback(data);
         }
     });
-    
-    callback(info);
 };
