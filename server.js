@@ -14,6 +14,10 @@ app.listen(port, () => {
     console.log(`server running on port ${port}`);
 });
 
+app.get('/', (req, res) => {
+    res.send('<h1>Ventii API</h1>');
+});
+
 app.post('/send-email', (req, res) => {
     console.log(req.body);
     
