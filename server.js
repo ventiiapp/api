@@ -4,13 +4,13 @@ const cors = require('cors');
 const mailer = require('./mailer.js');
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 app.use(cors({origin: '*'}));
 app.use(bodyParser.urlencoded({
     extended: true
   }));
 
-app.listen(process.env.PORT || port, () => {
+app.listen((process.env.PORT || PORT), () => {
     console.log(`server running on port ${port}`);
 });
 
