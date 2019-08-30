@@ -13,7 +13,7 @@ module.exports.sendEmail = (to, callback) => {
     let mailOptions = {
         from: 'ventiiapp@gmail.com',
         to,
-        // cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
+        cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
         subject: 'Formulario de Orden Ventii - TEST',
         html: '<h1>correo enviado desde la plataforma de Ventii</h1>'
     };
