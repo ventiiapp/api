@@ -103,7 +103,7 @@ module.exports.sendContactEmail = (formData, callback) => {
                     <h3 class="order-detail">Detalle de contacto:</h3>
                     <div class="order-box">
                         <p><strong>Nombre:</strong> ${formData.name}.<p>
-                        <p><strong>Número Celular:</strong> ${formData.mobile} personas.<p>
+                        <p><strong>Número Celular:</strong> ${formData.mobile}.<p>
                         <p><strong>Correo:</strong> ${formData.email}.<p>
                         <p><strong>Asunto:</strong> ${formData.text}.<p>
                     </div>
