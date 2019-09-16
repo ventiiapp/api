@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
     res.send('<h1>Ventii API</h1>');
 });
 
-app.post('/send-email', (req, res) => {
-    mailer.sendEmail(req.body, info => {
+app.post('/send-email', (req, res) => {  
+    mailer.sendEmail(JSON.parse(req.body.order), info => {
         res.send(info);
     });
 });

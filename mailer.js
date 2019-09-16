@@ -1,7 +1,9 @@
 const mailer = require('nodemailer');
 require('dotenv').config();
 
-module.exports.sendEmail = (data, callback) => {
+module.exports.sendEmail = (order, callback) => {
+    console.log('order: ', order);
+    
     let transporter = mailer.createTransport({
         service: 'gmail',
         auth: {
@@ -12,8 +14,8 @@ module.exports.sendEmail = (data, callback) => {
 
     let mailOptions = {
         from: 'ventiiapp@gmail.com',
-        to: data.email,
-        cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
+        to: order.email,
+        // cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
         subject: 'Formulario de Orden Ventii - TEST',
         html: `
         <html>
@@ -36,25 +38,34 @@ module.exports.sendEmail = (data, callback) => {
                 </header>
                 <div class="container">
                     <div class="hello-box">
-                    <h1>Hola xxxxx xxxxx</h1>
+                    <h1>Hola ${order.name} ${order.lastName}</h1>
                     <h3>Gracias por contactarnos, hemos recibido tu orden, muy pronto nos comunicaremos contigo!<h3/>
                     </div>
                     <h3 class="order-detail">Detalle de tu orden:</h3>
                     <div class="order-box">
-                        <p><strong>Tipo de evento:</strong> Cumpleanos.<p>
-                        <p><strong>Número en asistentes:</strong> 26 personas.<p>
-                        <p><strong>Presupuesto por persona:</strong> entre $50.000 y $100.000.<p>
-                        <p><strong>Fecha del evento:</strong> Octubre 31 de 2019.<p>
-                        <p><strong>Duracion del evento:</strong> 6 hrs.<p>
-                        <p><strong>Sitio:</strong> Al aire libre.<p>
-                        <p><strong>Necesitas ayuda con:</strong> Comida y menaje, Decoracion, música en vivo.<p>
-                        <p><strong>Licor:</strong> No necesitas!<p>
-                        <p><strong>Pasantes:</strong> Jugos Naturales, limon, sal.<p>
+                        <p><strong>Tipo de evento:</strong> ${order.eventType}.<p>
+                        <p><strong>Número en asistentes:</strong> ${order.people} personas.<p>
+                        <p><strong>Presupuesto por persona:</strong> ${order.budget}.<p>
+                        <p><strong>Fecha del evento:</strong> ${order.date}.<p>
+                        <p><strong>Duracion del evento:</strong> ${order.hours} horas.<p>
+                        <p><strong>Sitio:</strong> ${order.location}.<p>
+                        <p><strong>Necesitas ayuda con:</strong> 
+                            ${order.help.length > 0 ? 
+                                order.help.join(', ') :
+                                'Por ahora nada especial!'}.<p>
+                        <p><strong>Licor:</strong> 
+                            ${order.licourHelp.length > 0 ? 
+                                order.licourHelp.join(', ') :
+                                'No necesitas!'}<p>
+                        <p><strong>Pasantes:</strong> 
+                            ${order.pasantesHelp.length > 0 ? 
+                                order.pasantesHelp.join(', ') :
+                                'No necesitas!'}.<p>
                     </div>
                     <div class="footer">
                         <h4>
                         Si tienes alguna duda o requieres una atencion mas inmediata recuerda que puedes comunicarte a los
-                        siguientes numeros xxxxxxxxxxx o xxxxxxxxx en un horario de Lunes a Sabado de 8am a 6pm
+                        siguientes numeros xxxxxxxxxxx o xxxxxxxxx en un horario de Lunes a Viernes de 8:00 am a 6:00 pm
                         </h4>
                     </div>
                 </div>
