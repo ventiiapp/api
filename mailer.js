@@ -1,17 +1,15 @@
 const mailer = require('nodemailer');
 require('dotenv').config();
 
-module.exports.sendEmail = (order, callback) => {
-    console.log('order: ', order);
-    
-    let transporter = mailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
+let transporter = mailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD
+    }
+});
 
+module.exports.sendEmail = (order, callback) => {    
     let mailOptions = {
         from: 'ventiiapp@gmail.com',
         to: order.email,
@@ -74,11 +72,47 @@ module.exports.sendEmail = (order, callback) => {
     };
 
     transporter.sendMail(mailOptions, (err, data) => {
-        if (err) {
-            console.log('err: ', err);
-        } else {
-            console.log('email sent: ', data);
-            callback(data);
-        }
+        err ? console.log('err: ', err) : callback(data);
     });
 };
+
+module.exports.sendContactEmail = (formData, callback) => {
+    let mailOptions = {
+        from: 'ventiiapp@gmail.com',
+        to: 'ventiiapp@gmail.com',
+        cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
+        subject: 'Formulario de Contacto Ventii',
+        html: `
+        <html>
+            <head>
+                <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+                <style>
+                    html { background-color: #f1f2f3;}
+                    body { width: 70%; margin: 0 auto; font-family: 'Montserrat', sans-serif; background-color: #fff}
+                    header img { width: 20%; position: relative; top: 35px; left: 50px;}
+                    .container { padding: 20px; position: relative; top: 50px;}
+                    .order-detail { margin-top: 50px;}
+                    h3, h4 { color: gray;}
+                </style>
+            </head>
+            <body>
+                <header>
+                    <img src="https://ventiiapp.000webhostapp.com/assets/images/Ventii%20logo.png">
+                </header>
+                <div class="container">
+                    <h3 class="order-detail">Detalle de contacto:</h3>
+                    <div class="order-box">
+                        <p><strong>Nombre:</strong> ${formData.name}.<p>
+                        <p><strong>Número Celular:</strong> ${formData.mobile} personas.<p>
+                        <p><strong>Correo:</strong> ${formData.email}.<p>
+                        <p><strong>Asunto:</strong> ${formData.text}.<p>
+                    </div>
+                </div>
+            </body>
+        </html>`
+    };
+
+    transporter.sendMail(mailOptions, (err, data) => {
+        err ? console.log('err: ', err) : callback(data);
+    });
+}

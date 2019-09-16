@@ -23,3 +23,9 @@ app.post('/send-email', (req, res) => {
         res.send(info);
     });
 });
+
+app.post('/send-contact-email', (req, res) => {  
+    mailer.sendContactEmail(JSON.parse(req.body.form), info => {
+        res.send(info);
+    });
+});
