@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/send-email', (req, res) => {
-    mailer.sendEmail(req.body.to, info => {
+    mailer.sendEmail(req.body, info => {
         res.send(info);
     });
 });
