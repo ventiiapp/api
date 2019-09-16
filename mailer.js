@@ -15,8 +15,8 @@ module.exports.sendEmail = (order, callback) => {
     let mailOptions = {
         from: 'ventiiapp@gmail.com',
         to: order.email,
-        // cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
-        subject: 'Formulario de Orden Ventii - TEST',
+        cc: 'linacifuentess91@gmail.com, juan2lopez3@gmail.com',
+        subject: 'Formulario de Orden Ventii',
         html: `
         <html>
             <head>
