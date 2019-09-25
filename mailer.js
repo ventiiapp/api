@@ -30,7 +30,7 @@ module.exports.sendEmail = (order, callback) => {
                     .footer { padding-bottom: 50px;}
                     .footer .wa-img { position: relative; top: 3px; left: 5px;}
                     .footer a { cursor: pointer;}
-                    .footer a.ventii-link: { background-color: #714dfc; color: white; padding: 3px 17px; border-radius: 4px;
+                    .footer a.ventii-link { background-color: #714dfc; color: white; padding: 3px 17px; border-radius: 4px;
                         text-decoration: none; cursor: pointer; font-weight: 700;
                         }
                 </style>
