@@ -46,24 +46,24 @@ module.exports.sendEmail = (order, callback) => {
                         <p><strong>Presupuesto por persona:</strong> ${order.budget}.<p>
                         <p><strong>Fecha del evento:</strong> ${order.date}.<p>
                         <p><strong>Duracion del evento:</strong> ${order.hours} horas.<p>
-                        <p><strong>Sitio:</strong> ${order.location}.<p>
+                        <p><strong>Sitio:</strong> ${order.location || 'Ya tengo el sitio!'}.<p>
                         <p><strong>Necesitas ayuda con:</strong> 
-                            ${order.help.length > 0 ? 
+                            ${order.help && order.help.length > 0 ? 
                                 order.help.join(', ') :
                                 'Por ahora nada especial!'}.<p>
                         <p><strong>Licor:</strong> 
-                            ${order.licourHelp.length > 0 ? 
+                            ${order.licourHelp && order.licourHelp.length > 0 ? 
                                 order.licourHelp.join(', ') :
                                 'No necesitas!'}<p>
                         <p><strong>Pasantes:</strong> 
-                            ${order.pasantesHelp.length > 0 ? 
+                            ${order.pasantesHelp && order.pasantesHelp.length > 0 ? 
                                 order.pasantesHelp.join(', ') :
                                 'No necesitas!'}.<p>
                     </div>
                     <div class="footer">
                         <h4>
-                        Si tienes alguna duda o requieres una atencion mas inmediata recuerda que puedes comunicarte a los
-                        siguientes numeros xxxxxxxxxxx o xxxxxxxxx en un horario de Lunes a Viernes de 8:00 am a 6:00 pm
+                        Si tienes alguna duda o requieres una atencion mas inmediata recuerda que puedes comunicarte al
+                        siguiente numero 3053962162 en un horario de Lunes a Viernes de 8:00 am a 6:00 pm.
                         </h4>
                     </div>
                 </div>
