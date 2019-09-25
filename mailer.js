@@ -28,6 +28,11 @@ module.exports.sendEmail = (order, callback) => {
                     .hello-box, .order-box { border: solid 1px #c3c3c3; padding: 0 15px; border-radius: 10px;}
                     h3, h4 { color: gray;}
                     .footer { padding-bottom: 50px;}
+                    .footer .wa-img { position: relative; top: 3px; left: 5px;}
+                    .footer a { cursor: pointer;}
+                    .footer a.ventii-link: { background-color: #714dfc; color: white; padding: 3px 17px; border-radius: 4px;
+                        text-decoration: none; cursor: pointer; font-weight: 700;
+                        }
                 </style>
             </head>
             <body>
@@ -37,7 +42,10 @@ module.exports.sendEmail = (order, callback) => {
                 <div class="container">
                     <div class="hello-box">
                     <h1>Hola ${order.name} ${order.lastName}</h1>
-                    <h3>Gracias por contactarnos, hemos recibido tu orden, muy pronto nos comunicaremos contigo!<h3/>
+                    <h3>
+                        ¡Hemos recibido tu solicitud! Gracias por confiar en Ventii, 
+                        nos pondremos en contacto contigo en la próxima media hora. Disfruta, nosotros hacemos el resto!
+                    <h3/>
                     </div>
                     <h3 class="order-detail">Detalle de tu orden:</h3>
                     <div class="order-box">
@@ -62,9 +70,12 @@ module.exports.sendEmail = (order, callback) => {
                     </div>
                     <div class="footer">
                         <h4>
-                        Si tienes alguna duda o requieres una atencion mas inmediata recuerda que puedes comunicarte al
-                        siguiente numero 3053962162 en un horario de Lunes a Viernes de 8:00 am a 6:00 pm.
+                        Equipo Ventii
+                            <img class="wa-img" width="25px" src="https://www.freepnglogos.com/uploads/whatsapp-logo-light-green-png-0.png"/> +57 311 8652487 
+							<a target="_blank" href="https://facebook.com"><img class="wa-img" width="25px" src="https://cdn.icon-icons.com/icons2/914/PNG/512/Facebook_Color_icon-icons.com_71821.png"/></a>
+							<a target="_blank" href="https://instagram.com"><img class="wa-img" width="16px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"/></a>
                         </h4>
+                        <a target="_blank" class="ventii-link" href="http://ventii.co">Ir a Ventii</a>
                     </div>
                 </div>
             </body>
